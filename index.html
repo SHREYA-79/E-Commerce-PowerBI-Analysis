@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Commerce Customer Behavior & Sales Analysis</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background:#f4f7fb;
+    color:#333;
+    line-height:1.6;
+}
+
+header{
+    background:linear-gradient(135deg,#1e3a8a,#2563eb);
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+}
+
+header h1{
+    font-size:2.8rem;
+    margin-bottom:15px;
+}
+
+header p{
+    max-width:700px;
+    margin:auto;
+    font-size:1.1rem;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.section{
+    margin-bottom:50px;
+}
+
+.section h2{
+    margin-bottom:20px;
+    color:#1e3a8a;
+}
+
+.metrics{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.metric-card{
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.metric-card h3{
+    font-size:2rem;
+    color:#2563eb;
+}
+
+.metric-card p{
+    color:#666;
+}
+
+.dashboard-image{
+    width:100%;
+    border-radius:15px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.12);
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.feature-card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:10px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.primary{
+    background:#2563eb;
+    color:white;
+}
+
+.secondary{
+    background:#111827;
+    color:white;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:#111827;
+    color:white;
+    margin-top:50px;
+}
+
+@media(max-width:768px){
+    header h1{
+        font-size:2rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>E-Commerce Customer Behavior & Sales Analysis</h1>
+    <p>
+        A Power BI dashboard project focused on analyzing customer behavior,
+        sales performance, revenue trends, and business KPIs to support
+        data-driven decision-making.
+    </p>
+</header>
+
+<div class="container">
+
+    <section class="section">
+        <h2>Project Overview</h2>
+        <p>
+            This dashboard provides actionable insights into customer purchasing
+            patterns, product performance, payment preferences, and sales trends.
+            Using Power BI, the project transforms raw business data into
+            interactive visualizations that help identify growth opportunities
+            and improve business performance.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Key Metrics</h2>
+
+        <div class="metrics">
+            <div class="metric-card">
+                <h3>26K</h3>
+                <p>Total Orders</p>
+            </div>
+
+            <div class="metric-card">
+                <h3>2.49K</h3>
+                <p>Total Customers</p>
+            </div>
+
+            <div class="metric-card">
+                <h3>1.28K</h3>
+                <p>Average Order Value</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Dashboard Preview</h2>
+
+        <img
+            src="images/dashboard-preview.png"
+            alt="Power BI Dashboard Preview"
+            class="dashboard-image">
+    </section>
+
+    <section class="section">
+        <h2>Key Insights</h2>
+
+        <div class="features">
+
+            <div class="feature-card">
+                <h3>Revenue Analysis</h3>
+                <p>Electronics emerged as the highest revenue-generating category.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Customer Retention</h3>
+                <p>Credit card users showed the strongest returning customer rate.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Sales Trends</h3>
+                <p>Monthly trend analysis revealed seasonal fluctuations and peak periods.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Device Analytics</h3>
+                <p>Compared customer engagement across desktop, mobile, and tablet users.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Operational Metrics</h3>
+                <p>Tracked delivery timelines and customer purchasing behavior.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Interactive Reporting</h3>
+                <p>Implemented filters and KPI cards for dynamic business exploration.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Tools & Technologies</h2>
+
+        <p>
+            Power BI • DAX • Data Visualization • Business Intelligence •
+            Dashboard Design • Data Analysis
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Project Links</h2>
+
+        <div class="buttons">
+
+            <a class="btn primary"
+               href="https://github.com/shreya-79/E-Commerce-PowerBI-Analysis"
+               target="_blank">
+               GitHub Repository
+            </a>
+
+            <a class="btn secondary"
+               href="https://medium.com/@shreya.61219/how-i-built-my-first-bi-dashboard-95e6387823ae"
+               target="_blank">
+               Read Medium Article
+            </a>
+
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>Built by Shreya • Power BI Portfolio Project</p>
+</footer>
+
+</body>
+</html>
