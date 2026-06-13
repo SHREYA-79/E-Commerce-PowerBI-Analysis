@@ -6,264 +6,513 @@
 <title>E-Commerce Customer Behavior & Sales Analysis</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI',sans-serif;
     background:#f4f7fb;
     color:#333;
-    line-height:1.6;
+    transition:.3s;
+}
+
+body.dark{
+    background:#121212;
+    color:#eaeaea;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(8px);
+    z-index:1000;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    padding:15px;
+}
+
+body.dark nav{
+    background:#1e1e1e;
+}
+
+nav a{
+    text-decoration:none;
+    color:#2563eb;
+    font-weight:600;
+}
+
+.dark-toggle{
+    position:absolute;
+    right:25px;
+    cursor:pointer;
 }
 
 header{
     background:linear-gradient(135deg,#1e3a8a,#2563eb);
     color:white;
     text-align:center;
-    padding:80px 20px;
+    padding:140px 20px 90px;
 }
 
 header h1{
-    font-size:2.8rem;
-    margin-bottom:15px;
+    font-size:3rem;
+    margin-bottom:20px;
 }
 
 header p{
-    max-width:700px;
+    max-width:800px;
     margin:auto;
     font-size:1.1rem;
+    line-height:1.8;
+}
+
+.hero-buttons{
+    margin-top:30px;
+}
+
+.hero-buttons a{
+    display:inline-block;
+    margin:8px;
+    padding:12px 22px;
+    border-radius:10px;
+    text-decoration:none;
+    color:white;
+    border:2px solid white;
 }
 
 .container{
-    max-width:1100px;
+    max-width:1150px;
     margin:auto;
     padding:40px 20px;
 }
 
-.section{
-    margin-bottom:50px;
+section{
+    margin-bottom:70px;
 }
 
-.section h2{
+h2{
+    color:#2563eb;
     margin-bottom:20px;
-    color:#1e3a8a;
+}
+
+body.dark h2{
+    color:#60a5fa;
 }
 
 .metrics{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.metric-card{
-    background:white;
-    padding:25px;
-    text-align:center;
-    border-radius:15px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
-
-.metric-card h3{
-    font-size:2rem;
-    color:#2563eb;
-}
-
-.metric-card p{
-    color:#666;
-}
-
-.dashboard-image{
-    width:100%;
-    border-radius:15px;
-    box-shadow:0 6px 20px rgba(0,0,0,0.12);
-}
-
-.features{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
 }
 
-.feature-card{
+.metric-card{
     background:white;
-    padding:20px;
+    padding:30px;
+    text-align:center;
     border-radius:15px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-}
-
-.buttons{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    text-decoration:none;
-    padding:12px 22px;
-    border-radius:10px;
-    font-weight:600;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
     transition:.3s;
 }
 
-.primary{
+.metric-card:hover{
+    transform:translateY(-8px);
+}
+
+body.dark .metric-card{
+    background:#1e1e1e;
+}
+
+.metric-card h3{
+    color:#2563eb;
+    font-size:2.2rem;
+}
+
+.dashboard-image{
+    width:100%;
+    border-radius:15px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+.dashboard-image:hover{
+    transform:scale(1.02);
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.skills span{
     background:#2563eb;
     color:white;
+    padding:10px 15px;
+    border-radius:20px;
 }
 
-.secondary{
-    background:#111827;
+.timeline{
+    border-left:4px solid #2563eb;
+    padding-left:25px;
+}
+
+.timeline div{
+    margin-bottom:25px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+body.dark .card{
+    background:#1e1e1e;
+}
+
+.btn{
+    display:inline-block;
+    margin:10px 10px 0 0;
+    text-decoration:none;
+    background:#2563eb;
     color:white;
-}
-
-.btn:hover{
-    transform:translateY(-2px);
+    padding:12px 22px;
+    border-radius:10px;
 }
 
 footer{
     text-align:center;
-    padding:30px;
+    padding:40px;
     background:#111827;
     color:white;
-    margin-top:50px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.9);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:10px;
 }
 
 @media(max-width:768px){
-    header h1{
-        font-size:2rem;
-    }
+
+nav{
+    flex-wrap:wrap;
+    gap:10px;
 }
+
+header h1{
+    font-size:2rem;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
+<nav>
+    <a href="#overview">Overview</a>
+    <a href="#metrics">Metrics</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#skills">Skills</a>
+    <a href="#article">Article</a>
+
+    <span class="dark-toggle" onclick="toggleDarkMode()">
+        🌙
+    </span>
+</nav>
+
 <header>
+
     <h1>E-Commerce Customer Behavior & Sales Analysis</h1>
+
     <p>
-        A Power BI dashboard project focused on analyzing customer behavior,
-        sales performance, revenue trends, and business KPIs to support
-        data-driven decision-making.
+        Designed and developed an interactive Power BI dashboard
+        analyzing 26K+ orders and 2.4K+ customers to uncover
+        revenue drivers, customer retention trends, payment preferences,
+        and sales performance insights.
     </p>
+
+    <div class="hero-buttons">
+
+        <a href="https://github.com/shreya-79/E-Commerce-PowerBI-Analysis" target="_blank">
+            GitHub
+        </a>
+
+        <a href="https://medium.com/@shreya.61219/how-i-built-my-first-bi-dashboard-95e6387823ae" target="_blank">
+            Medium Article
+        </a>
+
+    </div>
+
 </header>
 
 <div class="container">
 
-    <section class="section">
-        <h2>Project Overview</h2>
-        <p>
-            This dashboard provides actionable insights into customer purchasing
-            patterns, product performance, payment preferences, and sales trends.
-            Using Power BI, the project transforms raw business data into
-            interactive visualizations that help identify growth opportunities
-            and improve business performance.
-        </p>
-    </section>
+<section id="overview">
 
-    <section class="section">
-        <h2>Key Metrics</h2>
+<h2>Project Overview</h2>
 
-        <div class="metrics">
-            <div class="metric-card">
-                <h3>26K</h3>
-                <p>Total Orders</p>
-            </div>
+<p>
+This project analyzes customer behavior and sales performance
+using Power BI. The dashboard helps identify revenue trends,
+customer engagement patterns, payment preferences,
+and operational insights through interactive visualizations.
+</p>
 
-            <div class="metric-card">
-                <h3>2.49K</h3>
-                <p>Total Customers</p>
-            </div>
+</section>
 
-            <div class="metric-card">
-                <h3>1.28K</h3>
-                <p>Average Order Value</p>
-            </div>
-        </div>
-    </section>
+<section id="metrics">
 
-    <section class="section">
-        <h2>Dashboard Preview</h2>
+<h2>Key Metrics</h2>
 
-        <img
-            src="images/dashboard-preview.png"
-            alt="Power BI Dashboard Preview"
-            class="dashboard-image">
-    </section>
+<div class="metrics">
 
-    <section class="section">
-        <h2>Key Insights</h2>
+<div class="metric-card">
+<h3 class="counter" data-target="26000">0</h3>
+<p>Total Orders</p>
+</div>
 
-        <div class="features">
+<div class="metric-card">
+<h3 class="counter" data-target="2492">0</h3>
+<p>Total Customers</p>
+</div>
 
-            <div class="feature-card">
-                <h3>Revenue Analysis</h3>
-                <p>Electronics emerged as the highest revenue-generating category.</p>
-            </div>
+<div class="metric-card">
+<h3 class="counter" data-target="1280">0</h3>
+<p>Average Order Value</p>
+</div>
 
-            <div class="feature-card">
-                <h3>Customer Retention</h3>
-                <p>Credit card users showed the strongest returning customer rate.</p>
-            </div>
+</div>
 
-            <div class="feature-card">
-                <h3>Sales Trends</h3>
-                <p>Monthly trend analysis revealed seasonal fluctuations and peak periods.</p>
-            </div>
+</section>
 
-            <div class="feature-card">
-                <h3>Device Analytics</h3>
-                <p>Compared customer engagement across desktop, mobile, and tablet users.</p>
-            </div>
+<section id="dashboard">
 
-            <div class="feature-card">
-                <h3>Operational Metrics</h3>
-                <p>Tracked delivery timelines and customer purchasing behavior.</p>
-            </div>
+<h2>Dashboard Preview</h2>
 
-            <div class="feature-card">
-                <h3>Interactive Reporting</h3>
-                <p>Implemented filters and KPI cards for dynamic business exploration.</p>
-            </div>
+<img
+src="images/dashboard-preview.png"
+class="dashboard-image"
+onclick="openModal(this.src)"
+alt="Dashboard Preview">
 
-        </div>
-    </section>
+<p style="margin-top:15px;">
+Click the dashboard to view it in full size.
+</p>
 
-    <section class="section">
-        <h2>Tools & Technologies</h2>
+</section>
 
-        <p>
-            Power BI • DAX • Data Visualization • Business Intelligence •
-            Dashboard Design • Data Analysis
-        </p>
-    </section>
+<section>
 
-    <section class="section">
-        <h2>Project Links</h2>
+<h2>Project Development Journey</h2>
 
-        <div class="buttons">
+<div class="timeline">
 
-            <a class="btn primary"
-               href="https://github.com/shreya-79/E-Commerce-PowerBI-Analysis"
-               target="_blank">
-               GitHub Repository
-            </a>
+<div>
+<h3>1. Business Understanding</h3>
+<p>Defined KPIs and business objectives.</p>
+</div>
 
-            <a class="btn secondary"
-               href="https://medium.com/@shreya.61219/how-i-built-my-first-bi-dashboard-95e6387823ae"
-               target="_blank">
-               Read Medium Article
-            </a>
+<div>
+<h3>2. Data Preparation</h3>
+<p>Cleaned and transformed raw data.</p>
+</div>
 
-        </div>
-    </section>
+<div>
+<h3>3. Data Modeling</h3>
+<p>Built relationships and measures using DAX.</p>
+</div>
+
+<div>
+<h3>4. Dashboard Design</h3>
+<p>Created interactive visuals and filters.</p>
+</div>
+
+<div>
+<h3>5. Insights Generation</h3>
+<p>Identified customer and sales trends.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="skills">
+
+<h2>Skills Demonstrated</h2>
+
+<div class="skills">
+<span>Power BI</span>
+<span>DAX</span>
+<span>Data Visualization</span>
+<span>Business Intelligence</span>
+<span>KPI Analysis</span>
+<span>Dashboard Design</span>
+<span>Data Cleaning</span>
+<span>Storytelling with Data</span>
+</div>
+
+</section>
+
+<section>
+
+<h2>Key Insights</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Revenue Analysis</h3>
+<p>Electronics generated the highest overall revenue.</p>
+</div>
+
+<div class="card">
+<h3>Customer Retention</h3>
+<p>Credit card users had the highest return rate.</p>
+</div>
+
+<div class="card">
+<h3>Sales Trends</h3>
+<p>Peak sales observed during key seasonal periods.</p>
+</div>
+
+<div class="card">
+<h3>Device Analytics</h3>
+<p>Mobile devices dominated customer engagement.</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>What I Learned</h2>
+
+<ul>
+<li>Building calculated measures using DAX</li>
+<li>Designing intuitive dashboards</li>
+<li>Identifying meaningful KPIs</li>
+<li>Creating actionable business insights</li>
+<li>Communicating results through visual storytelling</li>
+</ul>
+
+</section>
+
+<section id="article">
+
+<h2>Resources</h2>
+
+<a class="btn"
+href="https://github.com/shreya-79/E-Commerce-PowerBI-Analysis"
+target="_blank">
+View Repository
+</a>
+
+<a class="btn"
+href="https://medium.com/@shreya.61219/how-i-built-my-first-bi-dashboard-95e6387823ae"
+target="_blank">
+Read Medium Article
+</a>
+
+</section>
 
 </div>
 
 <footer>
-    <p>Built by Shreya • Power BI Portfolio Project</p>
+Built by Shreya • Power BI Portfolio Project
 </footer>
+
+<div id="modal" class="modal" onclick="closeModal()">
+<img id="modalImage">
+</div>
+
+<script>
+
+function toggleDarkMode(){
+document.body.classList.toggle("dark");
+}
+
+function openModal(src){
+document.getElementById("modal").style.display="flex";
+document.getElementById("modalImage").src=src;
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+const counters=document.querySelectorAll('.counter');
+
+counters.forEach(counter=>{
+
+const updateCounter=()=>{
+
+const target=+counter.getAttribute('data-target');
+const current=+counter.innerText;
+
+const increment=target/100;
+
+if(current<target){
+
+counter.innerText=Math.ceil(current+increment);
+
+setTimeout(updateCounter,20);
+
+}else{
+
+counter.innerText=
+target >=1000
+? (target/1000).toFixed(target===26000?0:2)+'K'
+: target;
+
+}
+
+};
+
+updateCounter();
+
+});
+
+</script>
 
 </body>
 </html>
